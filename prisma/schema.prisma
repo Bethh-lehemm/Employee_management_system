@@ -1,0 +1,136 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+model User {
+  userid       String  @id @default(uuid())
+  firstName    String
+  LastName     String
+  email        String  @unique
+  phone        String? @unique
+  passworkHash String
+  roleId       String?
+
+  role          Role?   @relation(fields: [roleId], references: [id])
+  emailVerified Boolean
+
+  lastLoginAt DateTime?
+  status      UserStatus @default(PENDING)
+  createdAt   DateTime   @default(now())
+  Updated     DateTime   @updatedAt
+
+  profile Profile?
+  audit   AuditLog[]
+  token   RefreshToken?
+
+  @@index([roleId])
+  @@index([status])
+}
+
+model Role {
+  id              String           @id @default(uuid())
+  name            String
+  slug            String           @unique
+  description     String?
+  user            User[]
+  rolePermissions RolePermission[]
+
+  createdAt DateTime @default(now())
+  Updated   DateTime @updatedAt
+}
+
+model Permission {
+  id          String  @id @default(uuid())
+  name        String
+  slug        String  @unique
+  description String?
+
+  rolePermissions RolePermission[]
+
+  createdAt DateTime @default(now())
+  Updated   DateTime @updatedAt
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  Updated   DateTime @updatedAt
+
+  @@id([roleId, permissionId])
+  @@index([roleId])
+  @@index([permissionId])
+}
+
+model Profile {
+  id          String    @id @default(uuid())
+  gender      Gender
+  dateOfBirth DateTime?
+  avatar      String?
+  bio         String?
+  city        String?
+  state       String?
+  country     String?
+  postalCode  String?
+  user        User      @relation(fields: [id], references: [userid], onDelete: Cascade)
+}
+
+model RefreshToken {
+  id        String    @id @default(uuid())
+  token     String    @unique
+  UserId    String    @unique
+  IpAddress String?
+  userAgent String?
+  isRevoked Boolean   @default(false)
+  user      User      @relation(fields: [UserId], references: [userid], onDelete: Cascade)
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([UserId])
+}
+
+model AuditLog {
+  id       String  @id @default(uuid())
+  userId   String?
+  action   String
+  entity   String
+  entityId String
+
+  description String?
+  metaData    Json?
+  changes     Json?
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+  user        User?    @relation(fields: [userId], references: [userid], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([entity])
+}
