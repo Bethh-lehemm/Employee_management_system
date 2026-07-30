@@ -30,7 +30,7 @@ model User {
   LastName     String
   email        String  @unique
   phone        String? @unique
-  passworkHash String
+  passwordHash String
   roleId       String?
 
   role          Role?   @relation(fields: [roleId], references: [id])

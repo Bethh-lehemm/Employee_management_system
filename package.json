@@ -1,25 +1,51 @@
 {
-  "name": "employee-management-system",
+  "name": "employee_mgt_db_aptecg",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple employee management application built with Node.js, TypeScript, Express, Prisma, and PostgreSQL.",
+  "keywords": [
+    "node",
+    "typescript",
+    "express",
+    "prisma",
+    "postgresql"
+  ],
   "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": "index.js",
+  "author": "Aptech Port Harcourt",
+  "type": "module",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/server.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run prisma:generate && tsc",
+    "start": "node dist/server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:format": "prisma format",
+    "prisma:validate": "prisma validate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.1.2",
+    "@types/pg": "^8.20.0",
+    "tsx": "^4.20.3",
     "typescript": "^7.0.2"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
     "bcrypt": "^6.0.0",
     "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "pg": "^8.22.0",
-    "prisma": "^7.8.0"
+    "prisma": "^7.8.0",
+    "reflect-metadata": "^0.2.2"
   }
 }

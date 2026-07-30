@@ -1,54 +1,34 @@
 {
 
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-     "rootDir": "./src",
-     "outDir": "./dist",
-
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
+  
+    "rootDir": "./src",
+    "outDir": "./dist",
     "module": "esnext",
     "target": "es2023",
     "types": ["node"],
-    "moduleResolution": "bundler",
-    // For nodejs:
+    "moduleResolution": "bundler", 
     "lib": ["ES2022"],
-    "strict": true, // Means you cant any carelessly, you'd have to specify the type of variable you are using. This is a good practice to avoid bugs in your code.
+    "strict": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "removeComments": true,
-    // "types": ["node"],
-    // and npm install -D @types/node
-
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-
-    // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
-    "resolveJsonModule": true,
+    "removeComments": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    
-
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
-
-    // Recommended Options
-    
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
+    "resolveJsonModule": true,
+    "sourceMap": true,
     "skipLibCheck": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+    
   },
   "include": ["src"],
-  "exclude": ["./dist", "./node_modules"]
+  "exclude": ["./dist","./node_modules"]
 }
+
