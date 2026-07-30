@@ -18,7 +18,7 @@ const flattenValidationErrors = (
 
   for (const error of errors) {
     const propertyPath = parentProperty
-      ? ${parentProperty}.${error.property}
+      ? `${parentProperty}.${error.property}`
       : error.property;
 
     if (error.constraints) {
