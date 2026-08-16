@@ -1,4 +1,4 @@
-import { AppError } from "./app.error.js";
+import { AppError } from "./app.error.ts";
 
 export class ConflictError extends AppError {
   constructor(message: string, code: string = "RESOURCE_ALREADY_EXISTS") {

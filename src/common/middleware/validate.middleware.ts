@@ -8,7 +8,7 @@ import type { NextFunction, Request, RequestHandler, Response } from "express";
 import {
   RequestValidationError,
   type ValidationIssueMap,
-} from "../errors/request-validation.error.js";
+} from "../errors/request-validation.error.ts";
 
 const flattenValidationErrors = (
   errors: ClassValidationError[],

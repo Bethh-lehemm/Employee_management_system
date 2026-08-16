@@ -1,4 +1,4 @@
-import type { Prisma } from "../../../generated/prisma/client.js";
+import type { Prisma } from "../../../generated/prisma/client.ts";
 import prisma  from "../../../config/db.config.ts";
 
 export interface CreateUserInput {

@@ -9,15 +9,15 @@
     "prisma",
     "postgresql"
   ],
-  "license": "ISC",
+  "license": "ISC", 
   "author": "Aptech Port Harcourt",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "server.ts",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "typecheck": "tsc --noEmit",
     "build": "npm run prisma:generate && tsc",
-    "start": "node dist/server.js",
+    "start": "node src/server.ts",
     "prisma:generate": "prisma generate",
     "prisma:format": "prisma format",
     "prisma:validate": "prisma validate",

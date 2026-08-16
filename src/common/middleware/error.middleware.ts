@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 
-import { AppError } from "../errors/app.error.js";
-import { errorResponse } from "../responses/api.response.js";
+import { AppError } from "../errors/app.error.ts";
+import { errorResponse } from "../responses/api.response.ts";
 
 export const errorMiddleware = (
   error: unknown,

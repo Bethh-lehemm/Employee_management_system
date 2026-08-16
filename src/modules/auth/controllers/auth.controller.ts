@@ -3,11 +3,11 @@ import type { Request, Response } from "express";
 import {
   successResponse,
   type ApiSuccessResponse,
-} from "../../../common/responses/api.response.js";
+} from "../../../common/responses/api.response.ts";
 
-import type { PublicUserRecord } from "../../users/repositories/user.repository.js";
-import type { RegisterDto } from "../dtos/register.dto.js";
-import { AuthService } from "../services/auth.service.js";
+import type { PublicUserRecord } from "../../users/repositories/user.repository.ts";
+import type { RegisterDto } from "../dtos/register.dto.ts";
+import { AuthService } from "../services/auth.service.ts";
 
 export class AuthController {
   constructor(private readonly authService: AuthService) {}

@@ -1,13 +1,13 @@
-import { ConflictError } from "../../../common/errors/conflict.error.js";
-import { BcryptUtils } from "../../../common/utils/bcrypt.utils.js";
+import { ConflictError } from "../../../common/errors/conflict.error.ts";
+import { BcryptUtils } from "../../../common/utils/bcrypt.utils.ts";
 
 import {
   type CreateUserInput,
   type PublicUserRecord,
   UserRepository,
-} from "../../users/repositories/user.repository.js";
+} from "../../users/repositories/user.repository.ts";
 
-import type { RegisterDto } from "../dtos/register.dto.js";
+import type { RegisterDto } from "../dtos/register.dto.ts";
 
 interface PrismaErrorLike {
   code?: unknown;

@@ -1,1 +1,1 @@
-export { apiRouter } from "./api.routes.js";
+export { apiRouter } from "./api.routes.ts";

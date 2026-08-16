@@ -3,9 +3,9 @@ import "reflect-metadata";
 import cors from "cors";
 import express from "express";
 
-import { errorMiddleware } from "./common/middleware/error.middleware.js";
-import { notFoundMiddleware } from "./common/middleware/not-found.middleware.js";
-import { apiRouter } from "./routes/index.js";
+import { errorMiddleware } from "./common/middleware/error.middleware.ts";
+import { notFoundMiddleware } from "./common/middleware/not-found.middleware.ts";
+import { apiRouter } from "./routes/index.ts";
 
 export const app = express();
 
